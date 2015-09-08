@@ -1,0 +1,118 @@
+//
+//  PrefixHeader.pch
+//  Investment
+//
+//  Created by iMac on 15-5-5.
+
+#ifndef Investment_PrefixHeader_pch
+#define Investment_PrefixHeader_pch
+
+#define STRING_NOT_NULL(str) ((str==nil)?@"":str)
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "UINavigationController+FDFullscreenPopGesture.h"
+
+#import "MMBaseViewController.h"
+#import "MMTableViewController.h"
+#import "UINavigationController+CustomAnimation.h"
+#import "MINavigationController.h"
+#import "MMBaseWebViewController.h"
+#import "SVWebViewController.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AVOSCloud/AVOSCloud.h>
+#define UmengAppkey @"5211818556240bc9ee01db2f"
+//#import<GHUnitIOS/GHUnit.h>
+#import "TRIPEnviroment.h"
+#define TEST @"1"
+//#import <GHUnitIOS/GHTest.h>
+//输入字母和数字
+#define KAlphaNum @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+#import"AFNetworking.h"
+#import "UIKit+AFNetworking.h"
+#import "Config.h"
+#import "NetRequestClass.h"
+#import "SVProgressHUD.h"
+#import "NSUserDefaults+Trip.h"
+#import "TRIPConfigure.h"
+
+
+
+
+#define SourcePath [[NSBundle mainBundle] pathForResource:[[NSString stringWithCString:__FILE__ encoding:NSUTF8StringEncoding] lastPathComponent] ofType:nil inDirectory:@"SourceCode"]
+
+#define MakeSourcePath -(NSString*)sourcePath{return SourcePath;}
+#define iOSVersion ([[[UIDevice currentDevice] systemVersion] floatValue])
+
+#define iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define OBJECT_OF_ARRAY_ATINDEX(_OBJ_,_ARRAY_,_INDEX_) ({if(_ARRAY_ && _INDEX_<[_ARRAY_ count]){ _OBJ_ = [_ARRAY_ objectAtIndex:_INDEX_];}})
+
+
+#define GCDGlobal( b ) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), b)
+
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+
+//屏幕宽度
+#define gScreenWidth [UIScreen mainScreen].bounds.size.width
+//屏幕高度
+#define gScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define GQAppDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
+
+#define GQ_MAIN_COLOR  RGBCOLOR(229, 226, 214, 1)
+
+#define GQ_BACKGROUND_COLOR  [UIColor colorWithHexColorString:@"ededed"]
+
+#define GQ_NAV_BACKGROUND_COLOR  [UIColor colorWithHexColorString:@"ededed"]
+
+#define GQ_NAV_BACKGROUND_RED_COLOR  [UIColor colorWithHexColorString:@"C84B33"]
+
+#define GQ_LINE_BACKGROUND_COLOR  [UIColor colorWithHexColorString:@"cccccc"]
+
+
+
+
+#define SERVER @"http://10.100.200.102:9081"//外网
+#define SERVER_IMG @"http://10.100.200.102:9081/images/mobile/ios/"
+#define GQsecurity @"/phone201/security"
+
+
+
+#if __has_feature(objc_arc)
+// ARC is On
+#define SafeRelease(obj) if(obj){obj=nil;}
+#define SafeRetain(obj) obj
+#define SafeAutoRelease(obj) obj
+#define SafeSuperDealloc(obj)
+#define SafeAutoReleasePoolStart @autoreleasepool {
+#define SafeAutoReleasePoolEnd }
+#else
+// ARC is Off
+#define __bridge
+#define SafeRelease(obj) if(obj){[obj release]; obj=nil;}
+#define SafeRetain(obj) [obj retain]
+#define SafeAutoRelease(obj) [obj autorelease]
+#define SafeSuperDealloc(obj) [super dealloc]
+#define SafeAutoReleasePoolStart NSAutoreleasePool *pool = [NSAutoreleasePool new];
+#define SafeAutoReleasePoolEnd [pool release];
+#endif
+
+
+
+//
+#ifndef __OPTIMIZE__
+
+#define NSLog(...) NSLog(__VA_ARGS__)
+
+#else
+
+#define NSLog(...) {}
+
+#endif
+
+
+#endif

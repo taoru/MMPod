@@ -1,0 +1,82 @@
+
+Touch events
+法通过传递进来CGPoint和UIEvent返回hit test view。该方法调用pointInside:withEvent:方法
+
+应器链遵照一个特殊的传递路径（The Responder Chain Follows a Specific Delivery Path）
+如果初始化对象（initial object）—— 即hit-test view或者first responder —— 不处理事件，UIKit会将事件传递给responder chain的下一个responder。每个responder决定它是传递事件还是通过nextResponder方法传递给它的下一个responder。这个操作继续直到一个responder处理event或者没有responder了。
+
+
+传递链：由系统向离用户最近的view传递。UIKit –> active app’s event queue –> window –> root view –>……–>lowest view
+响应链：由离用户最近的view向系统传递。initial view –> super view –> …..–> view controller –> window –> Application
+
+
+2 如果想通过代码来创建UIViewController的view，就要重写loadView方法，并且不需要调用[super loadView]，因为在第3点里面已经提到：若没有xib文件，[super loadView]默认会创建一个空白的UIView。我们既然要通过代码来自定义UIView，那么就没必要事先创建一个空白的UIView，以节省不必要的开销。正确的做法应该是这样：
+
+
+
+3、修改button内部控件：UIImageView和UILabel的位置
+
+
+调试
+bt
+gdb 命令
+p
+po
+(gdb) call [[self view]sizeToFit]
+
+
+ Object-C NSLog 常用输出基本数据类型格式  http://blog.csdn.net/mars2639/article/details/7587976
+
+
+21，如何使屏幕一直保持唤醒状态？（就是不自动黑屏）
+
+比如，如果我们做一个播放视频的功能时，想在播放的时候，不会自动进入屏保（黑屏）
+
+只要在代码里加入这一行：
+
+[[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+
+4
+[[UIDevice currentDevice] systemName];
+
+[[UIDevice currentDevice] systemVersion];//os version
+
+[[UIDevice currentDevice] uniqueIdentifier];
+
+[[UIDevice currentDevice] model];
+
+[[UIDevice currentDevice] name];
+
+真机上结果：
+
+System Name: iPhone OS
+
+System Version: 4.2.1
+
+Unique ID: 9b5ded78d5fa0ac96250f8b4af0e46f40b96ea6d
+
+Model: iPhone
+
+Name: “wwk”的 iPhone
+
+5
+
+GenerateMD5Key(url);  本地文件
+  本地图片
+本地数据库
+zip  加密
+NSUserDefaults
+
+net  Si  SHA1  + base64  ->token
+
+NSString *secPassword = SignWithRSA(password, publicKey);
+RSA加密算法是最常用的非对称加密算法
+
+
+MD5是不可逆的只有加密没有解密，iOS代码加密使用方式如下
+NSString *userName = @"cerastes";
+
+MD5,SHA-1,SHA-224,SHA-256,SHA-384,SHA-512，以及它们对应的HMAC算法，都属于散列算法
+
+
+
